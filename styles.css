@@ -855,45 +855,73 @@ button:focus-visible {
   }
 
   .bg-photo {
-    opacity: 0.34;
+    opacity: 0.32;
     border-width: 3px;
     border-radius: 12px;
   }
 
   .bg-p1 {
-    top: 8px;
-    left: -8px;
-    width: 24vw;
+    top: 10px;
+    left: 6px;
+    width: 27vw;
+    max-width: 112px;
   }
 
   .bg-p2 {
-    top: 8px;
-    right: -8px;
-    width: 24vw;
+    top: 10px;
+    right: 6px;
+    width: 27vw;
+    max-width: 112px;
   }
 
   .bg-p3 {
-    top: 34%;
-    left: -10px;
-    width: 24vw;
+    top: 28%;
+    left: 4px;
+    width: 27vw;
+    max-width: 112px;
   }
 
   .bg-p4 {
-    top: 34%;
-    right: -10px;
-    width: 24vw;
+    top: 28%;
+    right: 4px;
+    width: 27vw;
+    max-width: 112px;
   }
 
   .bg-p5 {
-    bottom: 110px;
-    left: -8px;
-    width: 24vw;
+    top: 56%;
+    left: 6px;
+    bottom: auto;
+    width: 26vw;
+    max-width: 108px;
   }
 
   .bg-p6 {
-    bottom: 110px;
-    right: -8px;
-    width: 24vw;
+    top: 56%;
+    right: 6px;
+    bottom: auto;
+    width: 26vw;
+    max-width: 108px;
+  }
+
+  .bg-p7 {
+    display: block;
+    top: auto;
+    bottom: 18px;
+    left: 8px;
+    width: 25vw;
+    max-width: 104px;
+    opacity: 0.3;
+  }
+
+  .bg-p8 {
+    display: block;
+    top: auto;
+    bottom: 18px;
+    right: 8px;
+    width: 25vw;
+    max-width: 104px;
+    opacity: 0.3;
   }
 
   .top-header {
