@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приглашение на свидание 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <div id="floating-hearts-layer" aria-hidden="true"></div>
+
+  <div class="page-shell">
+    <!-- Background Decorative Doodles -->
+    <div class="doodles" aria-hidden="true">
+      <!-- Top-left curly swirl -->
+      <svg class="doodle doodle-swirl-tl" viewBox="0 0 180 120" fill="none">
+        <path d="M12 108 C36 112, 46 84, 34 74 C24 66, 20 88, 40 94 C60 100, 68 72, 56 64 C46 58, 42 78, 62 82 C82 86, 90 58, 78 50 C68 44, 66 64, 86 66 C112 68, 134 40, 130 10" stroke="#2b2327" stroke-width="2.4" stroke-linecap="round" />
+      </svg>
+
+      <!-- Top-left sparkles -->
+      <svg class="doodle doodle-sparkles-tl" viewBox="0 0 120 120" fill="none">
+        <path d="M56 14 Q58 38 82 40 Q58 42 56 66 Q54 42 30 40 Q54 38 56 14 Z" fill="#fff09a" stroke="#2b2327" stroke-width="2" stroke-linejoin="round" />
+        <path d="M26 70 Q27 84 40 85 Q27 86 26 100 Q25 86 12 85 Q25 84 26 70 Z" fill="#ffffff" stroke="#2b2327" stroke-width="1.8" stroke-linejoin="round" />
+        <path d="M98 76 Q99 84 106 85 Q99 86 98 94 Q97 86 90 85 Q97 84 98 76 Z" fill="#ffffff" stroke="#2b2327" stroke-width="1.6" stroke-linejoin="round" />
+      </svg>
+
+      <!-- Top-right curly swirl + confetti + heart -->
+      <svg class="doodle doodle-swirl-tr" viewBox="0 0 260 220" fill="none">
+        <!-- Curly ribbon -->
+        <path d="M10 14 C32 4, 48 32, 34 42 C22 50, 18 28, 36 24 C56 20, 74 52, 58 62 C44 70, 42 46, 66 48 C92 50, 108 82, 140 84" stroke="#2b2327" stroke-width="2.3" stroke-linecap="round" />
+        <!-- Confetti pieces -->
+        <rect x="172" y="28" width="10" height="16" rx="2" transform="rotate(24 172 28)" fill="#f8a1c4" stroke="#2b2327" stroke-width="1.8" />
+        <rect x="208" y="42" width="14" height="9" rx="2" transform="rotate(-18 208 42)" fill="#fff09a" stroke="#2b2327" stroke-width="1.8" />
+        <rect x="148" y="64" width="13" height="8" rx="2" transform="rotate(-32 148 64)" fill="#c9a7f2" stroke="#2b2327" stroke-width="1.8" />
+        <rect x="184" y="88" width="12" height="14" rx="2" transform="rotate(14 184 88)" fill="#f8b896" stroke="#2b2327" stroke-width="1.8" />
+        <rect x="220" y="96" width="10" height="14" rx="2" transform="rotate(-28 220 96)" fill="#c9a7f2" stroke="#2b2327" stroke-width="1.8" />
+        <rect x="116" y="106" width="11" height="8" rx="2" transform="rotate(20 116 106)" fill="#f982ac" stroke="#2b2327" stroke-width="1.8" />
+        <rect x="192" y="128" width="12" height="8" rx="2" transform="rotate(-12 192 128)" fill="#fff09a" stroke="#2b2327" stroke-width="1.8" />
+        <!-- Sparkles -->
+        <path d="M64 114 Q65 128 78 130 Q65 132 64 146 Q63 132 50 130 Q63 128 64 114 Z" fill="#fff09a" stroke="#2b2327" stroke-width="1.8" stroke-linejoin="round" />
+        <path d="M106 118 Q107 127 116 128 Q107 129 106 138 Q105 129 96 128 Q105 127 106 118 Z" fill="#ffffff" stroke="#2b2327" stroke-width="1.6" stroke-linejoin="round" />
+        <!-- Floating pink heart -->
+        <path d="M132 184 C132 172, 114 168, 110 182 C106 196, 130 212, 134 214 C138 212, 160 194, 154 180 C150 168, 132 172, 132 184 Z" fill="#f76a9b" stroke="#2b2327" stroke-width="2.2" stroke-linejoin="round" />
+      </svg>
+
+      <!-- Mid-left small heart & swirl -->
+      <svg class="doodle doodle-mid-left" viewBox="0 0 110 220" fill="none">
+        <path d="M40 34 C38 24, 24 22, 22 32 C20 44, 38 56, 42 58 C46 56, 62 42, 58 30 C56 22, 42 24, 40 34 Z" fill="#f76a9b" stroke="#2b2327" stroke-width="2.1" stroke-linejoin="round" />
+        <path d="M52 138 C64 148, 70 166, 56 172 C46 176, 44 158, 58 156 C74 154, 84 176, 70 186 C60 192, 60 174, 76 174 C92 174, 98 194, 102 206" stroke="#2b2327" stroke-width="2.1" stroke-linecap="round" />
+      </svg>
+
+      <!-- Mid-right purple streamer & hearts -->
+      <svg class="doodle doodle-mid-right" viewBox="0 0 130 220" fill="none">
+        <path d="M18 54 C38 42, 66 56, 54 74 C44 88, 66 106, 86 92 C100 82, 82 64, 72 78 C62 94, 86 118, 114 106" stroke="#2b2327" stroke-width="7" stroke-linecap="round" />
+        <path d="M18 54 C38 42, 66 56, 54 74 C44 88, 66 106, 86 92 C100 82, 82 64, 72 78 C62 94, 86 118, 114 106" stroke="#c8a2f4" stroke-width="3.6" stroke-linecap="round" />
+        <path d="M88 154 C88 146, 76 144, 74 152 C72 162, 86 172, 89 174 C92 172, 104 160, 102 152 C100 144, 88 146, 88 154 Z" fill="#f76a9b" stroke="#2b2327" stroke-width="2" stroke-linejoin="round" />
+        <circle cx="28" cy="118" r="3" fill="#fff09a" stroke="#2b2327" stroke-width="1.5" />
+      </svg>
+    </div>
+
+    <!-- Top Navigation -->
+    <header class="top-header" id="home">
+      <nav class="top-nav" aria-label="Навигация по приглашению">
+        <div class="nav-links" role="tablist">
+          <button type="button" class="nav-btn is-active" data-target="home">
+            Главная <span aria-hidden="true">💗</span>
+          </button>
+          <button type="button" class="nav-btn" data-target="program">
+            Что нас ждёт? <span aria-hidden="true">✨</span>
+          </button>
+          <button type="button" class="nav-btn" data-target="details">
+            Когда и где? <span aria-hidden="true">📅</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Специально для тебя</p>
+        <h1 id="hero-title" class="hero-title">
+          Любимая, пойдёшь со мной<br />
+          на свидание?&nbsp;<span class="inline-emoji" aria-hidden="true">🥰</span>
+        </h1>
+        <p class="hero-subtitle">
+          Твоё официальное (и очень важное) приглашение на идеальный вечер
+        </p>
+      </section>
+
+      <!-- Polaroid Program Section -->
+      <section class="polaroid-section" id="program" aria-label="Программа вечера">
+        <!-- Decorative motion burst left -->
+        <svg class="polaroid-burst burst-left" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+          <path d="M28 32 L14 14 M18 36 L6 28 M36 22 L28 6" stroke="#2b2327" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+
+        <div class="polaroid-grid">
+          <!-- Polaroid 1: Dinner -->
+          <button type="button" class="polaroid-card tilt-left" data-modal="dinner">
+            <div class="polaroid-photo">
+              <img class="fit-contain" src="images/dinner.png" alt="Вкусный ужин — Остро!" />
+            </div>
+            <span class="polaroid-caption">Вкусный ужин&nbsp;<span aria-hidden="true">🍕</span></span>
+          </button>
+
+          <!-- Polaroid 2: Walk -->
+          <button type="button" class="polaroid-card tilt-none" data-modal="walk">
+            <div class="polaroid-photo">
+              <img src="images/walk.png" alt="Прогулка по городу с крокодильчиком и котиком" />
+            </div>
+            <span class="polaroid-caption">Прогулка под <span class="nowrap">звёздами&nbsp;<span aria-hidden="true">🌌</span></span></span>
+          </button>
+
+          <!-- Polaroid 3: Surprise -->
+          <button type="button" class="polaroid-card tilt-right" data-modal="surprise">
+            <div class="polaroid-photo">
+              <img class="fit-contain" src="images/surprise.png" alt="Подарок-сюрприз" />
+            </div>
+            <span class="polaroid-caption">Сюрприз&nbsp;<span aria-hidden="true">🎁</span></span>
+          </button>
+        </div>
+
+        <!-- Decorative motion burst right -->
+        <svg class="polaroid-burst burst-right" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+          <path d="M14 32 L28 14 M24 36 L36 28 M6 22 L14 6" stroke="#2b2327" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+      </section>
+
+      <!-- When & Where Box -->
+      <section class="details-section" id="details" aria-label="Когда и где">
+        <button type="button" class="details-card" id="details-trigger">
+          <p class="detail-line">
+            <strong>КОГДА:</strong> Пятница, вечер&nbsp;<span aria-hidden="true">⏰</span>
+          </p>
+          <p class="detail-line">
+            <strong>ГДЕ:</strong> Секретное место (тебе&nbsp;понравится!)&nbsp;<span aria-hidden="true">🤫</span>
+          </p>
+          <span class="details-hint-tag">Нажми, чтобы узнать подсказку ✨</span>
+        </button>
+      </section>
+
+      <!-- Action Buttons -->
+      <section class="actions-section" id="actions" aria-label="Ответить на приглашение">
+        <div class="actions-wrapper">
+          <svg class="btn-deco-left" viewBox="0 0 40 50" fill="none" aria-hidden="true">
+            <path d="M16 4 Q17 14 26 15 Q17 16 16 26 Q15 16 6 15 Q15 14 16 4 Z" fill="#fff09a" stroke="#2b2327" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M28 32 Q29 38 34 39 Q29 40 28 46 Q27 40 22 39 Q27 38 28 32 Z" fill="#ffffff" stroke="#2b2327" stroke-width="1.6" stroke-linejoin="round" />
+          </svg>
+
+          <div class="cta-group">
+            <button type="button" class="cta-btn" id="btn-yes-1" data-choice="yes-1">
+              ДА, КОНЕЧНО!&nbsp;<span aria-hidden="true">❤️</span>
+            </button>
+            <button type="button" class="cta-btn" id="btn-yes-2" data-choice="yes-2">
+              ОДНОЗНАЧНО ДА!&nbsp;<span aria-hidden="true">🥰</span>
+            </button>
+          </div>
+
+          <svg class="btn-deco-right" viewBox="0 0 56 54" fill="none" aria-hidden="true">
+            <path d="M16 24 C16 16, 4 14, 4 22 C4 30, 15 38, 17 39 C19 38, 30 30, 30 22 C30 14, 16 16, 16 24 Z" fill="#f76a9b" stroke="#2b2327" stroke-width="2" stroke-linejoin="round" />
+            <path d="M40 12 C40 6, 32 5, 32 10 C32 16, 39 21, 41 22 C43 21, 50 16, 50 10 C50 5, 40 6, 40 12 Z" fill="#f76a9b" stroke="#2b2327" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M44 34 Q45 40 50 41 Q45 42 44 48 Q43 42 38 41 Q43 40 44 34 Z" fill="#fff09a" stroke="#2b2327" stroke-width="1.5" />
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Corner Characters -->
+    <div class="bottom-characters">
+      <!-- Bottom-left: Hand-drawn Crocodile + Cat with Red Heart -->
+      <button type="button" class="corner-char corner-left" aria-label="Крокодильчик и котик" title="Тыкни нас! 💚">
+        <img src="images/croco-cat.png" alt="Крокодильчик и котик с сердечком" />
+      </button>
+
+      <!-- Bottom-right: Hand-drawn crokokis signature & heart -->
+      <button type="button" class="corner-char corner-right" aria-label="crokokis" title="crokokis 💚🖤">
+        <img src="images/crokokis.png" alt="crokokis" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Закрыть окно">✕</button>
+      <div class="modal-badge" id="modal-badge" aria-hidden="true">💖</div>
+      <h2 class="modal-title" id="modal-title">Заголовок</h2>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
