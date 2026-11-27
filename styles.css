@@ -1057,6 +1057,24 @@ button:focus-visible {
   }
 }
 
+/* ---------------- Game-First Lock (Hide Invitation Until Game Ends) ---------------- */
+body.is-game-locked .top-header,
+body.is-game-locked .hero,
+body.is-game-locked .polaroid-section,
+body.is-game-locked .details-section,
+body.is-game-locked .actions-section,
+body.is-game-locked .bottom-characters {
+  display: none;
+}
+
+body.is-game-locked .page-shell {
+  justify-content: center;
+}
+
+body.is-game-locked .minigame-section {
+  margin-bottom: 0;
+}
+
 /* ---------------- Mini-Game Platformer ---------------- */
 .minigame-section {
   width: 100%;

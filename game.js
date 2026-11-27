@@ -11,7 +11,7 @@
   const GRAVITY = 0.54;
   const MOVE_SPEED = 4.5;
   const JUMP_VEL = -11.8;
-  const TOTAL_TIME = 180; // 3 минуты
+  const TOTAL_TIME = 90; // 1:30 минуты
 
   // UI elements
   const timerEl = document.getElementById("game-timer");
@@ -618,12 +618,15 @@
   }
   if (toInviteBtn) {
     toInviteBtn.addEventListener("click", () => {
+      document.body.classList.remove("is-game-locked");
       const hero = document.getElementById("invitation");
       if (hero) {
-        hero.scrollIntoView({ behavior: "smooth", block: "start" });
-        hero.classList.remove("section-pulse");
-        void hero.offsetWidth;
-        hero.classList.add("section-pulse");
+        requestAnimationFrame(() => {
+          hero.scrollIntoView({ behavior: "smooth", block: "start" });
+          hero.classList.remove("section-pulse");
+          void hero.offsetWidth;
+          hero.classList.add("section-pulse");
+        });
       }
       if (typeof window.launchConfetti === "function") {
         window.launchConfetti(90);
