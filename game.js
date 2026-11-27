@@ -32,6 +32,60 @@
   const ctrlJump = document.getElementById("ctrl-jump");
   const bgmAudio = document.getElementById("game-bgm");
   const bgmToggleBtn = document.getElementById("btn-bgm-toggle");
+  const rotateLandscapeOverlay = document.getElementById("rotate-landscape-overlay");
+  const rotatePortraitOverlay = document.getElementById("rotate-portrait-overlay");
+  const endRotateNotice = document.getElementById("game-end-rotate-notice");
+
+  let waitingForPortraitUnlock = false;
+
+  function isTouchDevice() {
+    return window.matchMedia("(pointer: coarse)").matches ||
+      (navigator.maxTouchPoints > 0 && Math.min(window.innerWidth, window.innerHeight) <= 900);
+  }
+
+  function revealInvitation() {
+    waitingForPortraitUnlock = false;
+    if (rotatePortraitOverlay) rotatePortraitOverlay.hidden = true;
+    if (rotateLandscapeOverlay) rotateLandscapeOverlay.hidden = true;
+    document.body.classList.remove("is-game-locked");
+    const hero = document.getElementById("invitation");
+    if (hero) {
+      requestAnimationFrame(() => {
+        hero.scrollIntoView({ behavior: "smooth", block: "start" });
+        hero.classList.remove("section-pulse");
+        void hero.offsetWidth;
+        hero.classList.add("section-pulse");
+      });
+    }
+    if (typeof window.launchConfetti === "function") {
+      window.launchConfetti(90);
+    }
+  }
+
+  function syncOrientationUI() {
+    const touch = isTouchDevice();
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const isLandscape = window.innerWidth > window.innerHeight;
+    const isLocked = document.body.classList.contains("is-game-locked");
+
+    if (waitingForPortraitUnlock) {
+      if (!touch || isPortrait) {
+        revealInvitation();
+        return;
+      }
+      if (rotatePortraitOverlay) rotatePortraitOverlay.hidden = false;
+      if (rotateLandscapeOverlay) rotateLandscapeOverlay.hidden = true;
+      return;
+    }
+
+    if (rotateLandscapeOverlay) {
+      rotateLandscapeOverlay.hidden = !(touch && isLocked && state !== "ended" && isPortrait);
+    }
+
+    if (endRotateNotice) {
+      endRotateNotice.hidden = !(touch && state === "ended" && isLandscape);
+    }
+  }
 
   // Load sprites
   const catImg = new Image();
@@ -255,6 +309,7 @@
     endStatsEl.textContent = `Спасено крокодилов: ${savedCount} из 3`;
 
     endOverlay.hidden = false;
+    syncOrientationUI();
 
     if (typeof window.launchConfetti === "function") {
       window.launchConfetti(savedCount > 0 ? 120 : 50);
@@ -618,21 +673,18 @@
   }
   if (toInviteBtn) {
     toInviteBtn.addEventListener("click", () => {
-      document.body.classList.remove("is-game-locked");
-      const hero = document.getElementById("invitation");
-      if (hero) {
-        requestAnimationFrame(() => {
-          hero.scrollIntoView({ behavior: "smooth", block: "start" });
-          hero.classList.remove("section-pulse");
-          void hero.offsetWidth;
-          hero.classList.add("section-pulse");
-        });
+      if (isTouchDevice() && window.innerWidth > window.innerHeight) {
+        waitingForPortraitUnlock = true;
+        syncOrientationUI();
+        return;
       }
-      if (typeof window.launchConfetti === "function") {
-        window.launchConfetti(90);
-      }
+      revealInvitation();
     });
   }
+
+  window.addEventListener("resize", syncOrientationUI);
+  window.addEventListener("orientationchange", syncOrientationUI);
+  syncOrientationUI();
 
   // Initial render
   resetGameData();

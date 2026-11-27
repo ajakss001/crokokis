@@ -1466,3 +1466,155 @@ body.is-game-locked .minigame-section {
     display: none;
   }
 }
+
+/* ---------------- Mobile Orientation Prompts & Landscape Fit ---------------- */
+.orientation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(255, 238, 244, 0.94);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.orientation-overlay[hidden] {
+  display: none;
+}
+
+.orientation-box {
+  width: 100%;
+  max-width: 340px;
+  background: #ffffff;
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 14px 32px rgba(43, 35, 39, 0.18);
+}
+
+.orientation-icon {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  display: inline-block;
+  animation: rotateToLandscape 1.8s ease-in-out infinite;
+}
+
+.orientation-icon-portrait {
+  animation: rotateToPortrait 1.8s ease-in-out infinite;
+}
+
+@keyframes rotateToLandscape {
+  0%, 20% { transform: rotate(0deg); }
+  55%, 80% { transform: rotate(-90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes rotateToPortrait {
+  0%, 20% { transform: rotate(-90deg); }
+  55%, 80% { transform: rotate(0deg); }
+  100% { transform: rotate(-90deg); }
+}
+
+.orientation-title {
+  margin: 0 0 8px;
+  font-size: 1.24rem;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.orientation-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.game-rotate-notice {
+  margin: 0 auto 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fff0f6;
+  border: 2px dashed #fa5d92;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #b82256;
+}
+
+.game-rotate-notice[hidden] {
+  display: none;
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .page-shell {
+    padding: 6px 14px;
+  }
+
+  .minigame-section {
+    max-width: 720px;
+  }
+
+  .game-card {
+    padding: 8px 12px;
+    border-radius: 18px;
+  }
+
+  .game-hud {
+    margin-bottom: 6px;
+  }
+
+  .hud-pill {
+    padding: 3px 10px;
+    font-size: 0.8rem;
+  }
+
+  #game-canvas {
+    max-height: calc(100dvh - 118px);
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .game-overlay-box {
+    padding: 10px 14px;
+  }
+
+  .overlay-cat {
+    height: 28px;
+  }
+
+  .overlay-croc {
+    height: 22px;
+  }
+
+  .game-overlay-title {
+    font-size: 1.05rem;
+  }
+
+  .game-overlay-text {
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+  }
+
+  .game-rewards-list {
+    font-size: 0.72rem;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+  }
+
+  .game-controls {
+    margin-top: 6px;
+  }
+
+  .ctrl-btn,
+  .rescue-btn {
+    height: 38px;
+    font-size: 0.86rem;
+  }
+
+  .game-keyboard-hint {
+    display: none;
+  }
+}
