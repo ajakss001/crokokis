@@ -1571,37 +1571,88 @@ body.is-game-locked .minigame-section {
   }
 
   #game-canvas {
-    max-height: calc(100dvh - 118px);
+    max-height: calc(100dvh - 108px);
     width: auto;
     max-width: 100%;
     margin: 0 auto;
   }
 
+  .game-overlay {
+    position: relative;
+    padding: 6px;
+  }
+
+  .game-stage:has(.game-overlay:not([hidden])) #game-canvas {
+    display: none;
+  }
+
   .game-overlay-box {
-    padding: 10px 14px;
+    max-width: 560px;
+    padding: 8px 14px;
+    border-radius: 16px;
+  }
+
+  .game-overlay-sprites {
+    margin-bottom: 4px;
   }
 
   .overlay-cat {
-    height: 28px;
+    height: 24px;
   }
 
   .overlay-croc {
-    height: 22px;
+    height: 18px;
   }
 
   .game-overlay-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
+    margin-bottom: 3px;
   }
 
   .game-overlay-text {
-    font-size: 0.78rem;
-    margin-bottom: 6px;
+    font-size: 0.76rem;
+    margin-bottom: 5px;
   }
 
   .game-rewards-list {
     font-size: 0.72rem;
     padding: 4px 8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    gap: 3px 10px;
+  }
+
+  .game-primary-btn,
+  .game-secondary-btn {
+    padding: 7px 16px;
+    font-size: 0.84rem;
+  }
+
+  .game-end-badge {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+  }
+
+  .game-end-stats {
+    font-size: 0.78rem;
+    margin-bottom: 3px;
+  }
+
+  .game-end-reward {
+    font-size: 0.82rem;
+    padding: 3px 10px;
+    margin-bottom: 5px;
+  }
+
+  .game-end-message {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .game-end-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
 
   .game-controls {
