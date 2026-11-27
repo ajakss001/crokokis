@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
@@ -64,7 +64,11 @@
               <span aria-hidden="true">💚</span>
               <span id="game-reward">0 крококисов</span>
             </div>
+            <button type="button" class="hud-pill hud-sound-btn" id="btn-bgm-toggle" aria-label="Включить или выключить музыку" title="Музыка">
+              🔊
+            </button>
           </div>
+          <audio id="game-bgm" src="audio/bgm.mp3?v=1" loop preload="auto"></audio>
 
           <div class="game-stage">
             <canvas id="game-canvas" width="800" height="380"></canvas>
@@ -227,6 +231,6 @@
   </div>
 
   <script src="script.js?v=6"></script>
-  <script src="game.js?v=1"></script>
+  <script src="game.js?v=2"></script>
 </body>
 </html>

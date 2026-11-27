@@ -1099,6 +1099,17 @@ button:focus-visible {
   color: #b82256;
 }
 
+.hud-sound-btn {
+  padding: 6px 11px;
+  background: #ffffff;
+  transition: transform 0.12s ease, background-color 0.15s ease;
+}
+
+.hud-sound-btn:hover {
+  background: #fff0f6;
+  transform: translateY(-1px);
+}
+
 .game-stage {
   position: relative;
   width: 100%;

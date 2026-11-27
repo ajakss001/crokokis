@@ -30,6 +30,8 @@
   const ctrlLeft = document.getElementById("ctrl-left");
   const ctrlRight = document.getElementById("ctrl-right");
   const ctrlJump = document.getElementById("ctrl-jump");
+  const bgmAudio = document.getElementById("game-bgm");
+  const bgmToggleBtn = document.getElementById("btn-bgm-toggle");
 
   // Load sprites
   const catImg = new Image();
@@ -197,11 +199,27 @@
     updateRescueButton(null);
   }
 
+  function startBgm() {
+    if (!bgmAudio) return;
+    bgmAudio.volume = 0.45;
+    bgmAudio.currentTime = 0;
+    const playPromise = bgmAudio.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  }
+
+  function stopBgm() {
+    if (!bgmAudio) return;
+    bgmAudio.pause();
+  }
+
   function startGame() {
     resetGameData();
     state = "playing";
     startOverlay.hidden = true;
     endOverlay.hidden = true;
+    startBgm();
 
     if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(() => {
@@ -222,6 +240,7 @@
   function finishGame(allSaved) {
     if (state === "ended") return;
     state = "ended";
+    stopBgm();
     if (timerInterval) {
       clearInterval(timerInterval);
       timerInterval = null;
@@ -584,6 +603,12 @@
 
   if (rescueBtn) {
     rescueBtn.addEventListener("click", rescueNearbyCroc);
+  }
+  if (bgmToggleBtn && bgmAudio) {
+    bgmToggleBtn.addEventListener("click", () => {
+      bgmAudio.muted = !bgmAudio.muted;
+      bgmToggleBtn.textContent = bgmAudio.muted ? "🔇" : "🔊";
+    });
   }
   if (startBtn) {
     startBtn.addEventListener("click", startGame);
