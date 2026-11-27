@@ -40,7 +40,8 @@
 
   function isTouchDevice() {
     return window.matchMedia("(pointer: coarse)").matches ||
-      (navigator.maxTouchPoints > 0 && Math.min(window.innerWidth, window.innerHeight) <= 900);
+      (navigator.maxTouchPoints > 0 && Math.min(window.innerWidth, window.innerHeight) <= 900) ||
+      Math.min(window.innerWidth, window.innerHeight) <= 540;
   }
 
   function revealInvitation() {
