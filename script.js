@@ -341,4 +341,7 @@
       spawnHeartBurst(x, y, 8);
     });
   });
+
+  window.launchConfetti = launchConfetti;
+  window.spawnHeartBurst = spawnHeartBurst;
 })();

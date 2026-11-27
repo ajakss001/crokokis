@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
@@ -31,8 +31,11 @@
     <header class="top-header" id="home">
       <nav class="top-nav" aria-label="Навигация по приглашению">
         <div class="nav-links" role="tablist">
-          <button type="button" class="nav-btn is-active" data-target="home">
-            Главная <span aria-hidden="true">💗</span>
+          <button type="button" class="nav-btn is-active" data-target="minigame">
+            Игра <span aria-hidden="true">🐊</span>
+          </button>
+          <button type="button" class="nav-btn" data-target="invitation">
+            Приглашение <span aria-hidden="true">💗</span>
           </button>
           <button type="button" class="nav-btn" data-target="program">
             Что нас ждёт? <span aria-hidden="true">✨</span>
@@ -45,8 +48,90 @@
     </header>
 
     <main class="main-content">
+      <!-- Mini-Game Section -->
+      <section class="minigame-section" id="minigame" aria-label="Мини-игра: спаси крокодилов">
+        <div class="game-card">
+          <div class="game-hud">
+            <div class="hud-pill" aria-label="Таймер">
+              <span aria-hidden="true">⏱</span>
+              <span id="game-timer">03:00</span>
+            </div>
+            <div class="hud-pill" aria-label="Спасено крокодилов">
+              <span aria-hidden="true">🐊</span>
+              <span id="game-rescued">0 / 3</span>
+            </div>
+            <div class="hud-pill hud-pill-pink" aria-label="Награда">
+              <span aria-hidden="true">💚</span>
+              <span id="game-reward">0 крококисов</span>
+            </div>
+          </div>
+
+          <div class="game-stage">
+            <canvas id="game-canvas" width="800" height="380"></canvas>
+
+            <!-- Start Overlay -->
+            <div class="game-overlay" id="game-start-overlay">
+              <div class="game-overlay-box">
+                <div class="game-overlay-sprites" aria-hidden="true">
+                  <img src="images/cat-sprite.png" alt="" class="overlay-cat" />
+                  <span class="overlay-heart">❤️</span>
+                  <img src="images/croco-sprite.png" alt="" class="overlay-croc" />
+                </div>
+                <h2 class="game-overlay-title">Спаси 3 крокодилов!</h2>
+                <p class="game-overlay-text">
+                  У тебя есть <strong>3 минуты</strong>! Дойди до всех трёх крокодилов и нажми кнопку <strong>«Спасти»</strong>.
+                </p>
+                <div class="game-rewards-list">
+                  <span>3 крокодила — <strong>20 крококисов</strong></span>
+                  <span>2 крокодила — <strong>15 крококисов</strong></span>
+                  <span>1 крокодил — <strong>5 крококисов</strong></span>
+                </div>
+                <button type="button" class="game-primary-btn" id="btn-game-start">
+                  Начать игру! 🎮
+                </button>
+              </div>
+            </div>
+
+            <!-- End Overlay -->
+            <div class="game-overlay" id="game-end-overlay" hidden>
+              <div class="game-overlay-box game-end-box">
+                <div class="game-end-badge" id="game-end-badge" aria-hidden="true">🐊💚🎉</div>
+                <p class="game-end-stats" id="game-end-stats">Спасено крокодилов: 3 из 3</p>
+                <div class="game-end-reward" id="game-end-reward">Награда: +20 крококисов</div>
+                <p class="game-end-message">
+                  Спасибо тебе за все, милая. Я ценю твое каждое спасение моего внутреннего крокодила
+                </p>
+                <div class="game-end-actions">
+                  <button type="button" class="game-primary-btn" id="btn-to-invite">
+                    Открыть приглашение на свидание 💌
+                  </button>
+                  <button type="button" class="game-secondary-btn" id="btn-game-replay">
+                    Сыграть ещё раз 🔄
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Bar (Desktop + Mobile Touch) -->
+          <div class="game-controls">
+            <div class="move-controls">
+              <button type="button" class="ctrl-btn" id="ctrl-left" aria-label="Идти влево">◀</button>
+              <button type="button" class="ctrl-btn" id="ctrl-right" aria-label="Идти вправо">▶</button>
+            </div>
+            <div class="action-controls">
+              <button type="button" class="ctrl-btn ctrl-jump" id="ctrl-jump" aria-label="Прыжок">▲ Прыжок</button>
+              <button type="button" class="rescue-btn" id="btn-rescue" disabled>Подойди ближе 💚</button>
+            </div>
+          </div>
+          <p class="game-keyboard-hint">
+            Клавиатура: ← → или A D — движение, ↑ / W / Пробел — прыжок, E / Enter — спасти
+          </p>
+        </div>
+      </section>
+
       <!-- Hero Section -->
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero" id="invitation" aria-labelledby="hero-title">
         <h1 id="hero-title" class="hero-title">
           Моя вкусная девочка,<br />
           пойдёшь со мной на свидание?
@@ -141,6 +226,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
+  <script src="game.js?v=1"></script>
 </body>
 </html>
